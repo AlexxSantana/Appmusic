@@ -1,5 +1,4 @@
 <?php
-
  #Lucas Fadavi Solanilla
 
 //Esto es para chequear si el usuario sigue logeado o existe una cookie
