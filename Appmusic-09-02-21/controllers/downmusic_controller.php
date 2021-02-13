@@ -54,13 +54,12 @@ if (!empty($_COOKIE["user"])) {
 	//Si existe la cookie carrito, se desiariliza para obtener los datos posteriomente y hacer uso de ellos  
 	if(isset($_COOKIE["carrito"])){
 		$listaCarrito=unserialize($_COOKIE['carrito']);
-	} else{ //En caso de no existir la cookie carrito o usuario (se añadirá posteriormente) redirigirá a la página de login
-	//header('Location: http://www.example.com/');
 	}
-
+	
+	
 	//1º Añadir al carrito
 	if (isset($_POST["agregar"])){
-		if(isset($_POST["producto"])){
+		if(!empty($_POST["producto"][0])){//Si  se selecciona un producto de la lista se añade al carrito dicho producto
 			$ultimaPos=count($listaCarrito);
 			$listaCarrito[$ultimaPos]["cancion"]= $_POST["producto"];
 			$listaCarrito[$ultimaPos]["cantidad"]= $_POST["cantidad"];
@@ -69,6 +68,8 @@ if (!empty($_COOKIE["user"])) {
 			setcookie("carrito", serialize($listaCarrito), time() + (86400 * 10), '/');
 		
 			echo "<p class='ok'><strong>Título agregado al carrito</strong></p><br><br>";
+		} else {
+			echo "<p class='error'>Debes seleccionar un producto</p>";
 		}
 	}
 		
@@ -109,7 +110,7 @@ if (!empty($_COOKIE["user"])) {
 		}
 	}
 } else{ //Si no existe la $_COOKIE["usuario"], es decir el usuario no esta logeado, volverá a la pág de login.php para logearse
-	//exit("No estas logeado, datos incorrectos."); 
+	
 	header("location:../views/login.php");
 	}		
 			
