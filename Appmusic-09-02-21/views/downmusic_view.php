@@ -58,7 +58,7 @@
 	<form  name"prueba" action="<?php echo $_SERVER['PHP_SELF']; ?> " method="post">
 		
 			Título  <select name="producto">
-					<option>--Selecciona una canción--</option>
+					<option value="0">--Selecciona una canción--</option>
 					<?php
 						//Se lista los nombres de las canciones  en un select
 						foreach($musica as $lista){
@@ -73,7 +73,7 @@
 					<br><br>
 	</form>
 </div>
-	<a href="pe_login.php" class="cerrar"><input type="button" value="Cerrar Sesi&oacute;n"></a>
+	<a href="../index.php" class="cerrar"><input type="button" value="Cerrar Sesi&oacute;n"></a>
 </body>
 
 </html>
